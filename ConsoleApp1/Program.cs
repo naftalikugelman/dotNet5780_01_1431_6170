@@ -20,39 +20,64 @@ namespace ConsoleApp1
                 }
             }
             //print
+            Print(mat);
+
+
+            Console.Write("Enter your start day: ");
+            int inputDay = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter your start month: ");
+            int inputMonth = Convert.ToInt32(Console.ReadLine());
+            //date = Convert.ToDateTime(Console.ReadLine());
+            DateTime date = new DateTime(2019, inputMonth, inputDay);
+            Console.WriteLine(date.ToString("dd/MM/yyyy"));
+
+            Console.Write("Enter how much days: ");
+            int days = Convert.ToInt32(Console.ReadLine());
+            //int days = 10;
+
+            addReservation(mat, date, days);
+
+            Console.ReadKey();
+        }
+
+        private static bool addReservation(bool[][] mat, DateTime date, int days)
+        {
+            Console.WriteLine("{0} / {1}", date.Month, date.Day);
+            for (int i = 0; i < days; i++)
+            {
+                DateTime tempDate = date;
+                //Console.Write(" -> {0} ", date.ToString("dd/MM/yyyy"));
+                //Console.WriteLine("Day-> {0} / {1} <-Month", date.Day, date.Month);
+                if (mat[tempDate.Month - 1][tempDate.Day - 1] == true)
+                {
+                    return false;
+                };
+                tempDate = tempDate.AddDays(1);
+
+                if (mat[date.Month - 1][date.Day - 1] == false)
+                {
+                    mat[date.Month - 1][date.Day - 1] = true;
+                };
+                date = date.AddDays(1);
+
+            }
+            Print(mat);
+            return true;
+
+        }
+
+        private static void Print(bool[][] mat)
+        {
             for (int i = 0; i < mat.Length; i++)
             {
                 for (int j = 0; j < mat[i].Length; j++)
                 {
-                    Console.Write(" {0}",mat[i][j]);
+                    if (mat[i][j]) Console.Write(" T ");
+                    else Console.Write(" F ");
                 }
                 Console.WriteLine();
             }
-
-            DateTime date = new DateTime();
-            Console.Write("Enter your start date: ");
-            date = Convert.ToDateTime(Console.ReadLine());
-            //Console.WriteLine(date);
-
-            Console.Write("Enter how much days: ");
-            int days = Convert.ToInt32(Console.ReadLine());
-            
-            //check is aveilable
-            DateTime tempDate = new DateTime();
-            tempDate = date;
-            int countDays = 1;
-            tempDate.AddDays(1);
-            for(int i = 0; i < days; i++)
-            {
-                if (mat[tempDate.Month][tempDate.Day] = false)
-                {
-                    tempDate.AddDays(1);
-                    countDays++;
-                };
-            }
-
-
-
         }
+
     }
 }
