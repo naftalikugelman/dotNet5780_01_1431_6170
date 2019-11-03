@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp6
+namespace Question 1
 {
     class Program
     {
@@ -21,7 +21,7 @@ namespace ConsoleApp6
             Console.Write("A:");
             for (int i = 0; i < 20; i++)
             {
-                A[i] = rnd.Next() % 102 + 18;
+                A[i] = rnd.Next(18, 122);
                 Console.Write("  {0,-3}", A[i]);
             }
             Console.WriteLine();
