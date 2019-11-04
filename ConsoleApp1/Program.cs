@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//enum Menu { CUSTOMER_REQUEST, ANNUAL_LIST, DAYS, EXIT };
+
 namespace ConsoleApp1
 {
     class Program
@@ -19,30 +21,62 @@ namespace ConsoleApp1
                     mat[i][j] = false;
                 }
             }
-            //print
-            Print(mat);
+            
+            int choise = 0;
+            while (choise != 4)
+            {
+                Console.WriteLine(@"Please choose a menu option: 
+                
+         1 - NEW RESERVATION - 
+         2 - ANNUAL LIST -
+         3 - DAILY LIST - 
+         4 - EXIT - ");
 
+                choise = Convert.ToInt32(Console.ReadLine());
+                switch (choise)
+                {
+                    case 1:
+                       
+                        Console.Write("Enter the start day reservation (dd/mm/yyyy): ");
+                        DateTime date = Convert.ToDateTime(Console.ReadLine());
+                        date = new DateTime(date.Year, date.Month, date.Day);
+                        Console.WriteLine(date.ToString("dd/MM/yyyy"));
+                        Console.Write("Enter how much days: ");
+                        int days = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Enter your start day: ");
-            int inputDay = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter your start month: ");
-            int inputMonth = Convert.ToInt32(Console.ReadLine());
-            //date = Convert.ToDateTime(Console.ReadLine());
-            DateTime date = new DateTime(2019, inputMonth, inputDay);
-            Console.WriteLine(date.ToString("dd/MM/yyyy"));
+                        if (addReservation(mat, date, days))
+                        {
+                            Console.WriteLine("The request was approved");
+                        }
+                        else
+                        {
+                            Console.WriteLine("The resquest  was rejected");
+                        }
+                        Print(mat);
 
-            Console.Write("Enter how much days: ");
-            int days = Convert.ToInt32(Console.ReadLine());
-            //int days = 10;
-
-            addReservation(mat, date, days);
+                        break;
+                    case 2:
+                        Console.WriteLine("Annual Occupancy List");
+                        break;
+                    case 3:
+                        Console.WriteLine("Total occupied days");
+                        break;
+                    case 4:
+                        Console.WriteLine("Thanks for using our system!");
+                        
+                        break;
+                    default:
+                        break;
+                }
+            }
 
             Console.ReadKey();
+
         }
 
         private static bool addReservation(bool[][] mat, DateTime date, int days)
         {
-            Console.WriteLine("{0} / {1}", date.Month, date.Day);
+
             for (int i = 0; i < days; i++)
             {
                 DateTime tempDate = date;
@@ -52,32 +86,71 @@ namespace ConsoleApp1
                 {
                     return false;
                 };
+
                 tempDate = tempDate.AddDays(1);
 
                 if (mat[date.Month - 1][date.Day - 1] == false)
                 {
                     mat[date.Month - 1][date.Day - 1] = true;
+
                 };
                 date = date.AddDays(1);
 
             }
-            Print(mat);
+            //Print(mat);
             return true;
 
         }
 
         private static void Print(bool[][] mat)
         {
+            string rented = null;
             for (int i = 0; i < mat.Length; i++)
             {
                 for (int j = 0; j < mat[i].Length; j++)
                 {
-                    if (mat[i][j]) Console.Write(" T ");
-                    else Console.Write(" F ");
+                    if (mat[i][j])
+                    {
+                        Console.Write(" T ");
+                        //Console.WriteLine(getCompleteReservation(mat, i, j));
+                        if (rented == null)
+                        {
+                            rented = getCompleteReservation(mat, i, j);
+                        }
+
+                    }
+                    else
+                    {
+                        Console.Write(" F ");
+
+                    }
+
+                }
+                if (!(rented == null))
+                {
+                    Console.Write(rented);
+                    rented = null;
                 }
                 Console.WriteLine();
             }
         }
 
+        private static string getCompleteReservation(bool[][] mat, int i, int j)
+        {
+            int inicialMonth = i;
+            int inicialDay = j;
+            DateTime date;
+
+            //date = new DateTime(2020, 4, 4);
+            date = new DateTime(2020, i, j);
+            while (mat[date.Month][date.Day])
+            {
+                date = date.AddDays(1);
+            }
+            // Console.WriteLine(j, i, date.Day, date.Month);
+            //Console.WriteLine(date.Month);
+            //Console.WriteLine(i);
+            return "-> Rented from " + (j + 1) + "/" + (i + 1) + " to " + (date.Day + 1) + "/" + (date.Month + 1);
+        }
     }
 }
