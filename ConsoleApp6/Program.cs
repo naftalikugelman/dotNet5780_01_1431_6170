@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Daniel Vofchuk & Naftali Kugelmann
+//00091431 & 305606170
+//Part 1
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
