@@ -187,7 +187,7 @@ namespace ConsoleApp1
                     }
                     if (flag && !mat[i][j])//If we have an FALSE day AND aur last day was a TRUE, so this reservation ends here...
                     {
-                        finalText += (j + 2) + "/" + (i + 2) + "\n";//Adds the final date to the final string
+                        finalText += (j + 1) + "/" + (i + 1) + "\n";//Adds the final date to the final string
                         flag = false;//sets the flagh to flase
                     }
                 }
