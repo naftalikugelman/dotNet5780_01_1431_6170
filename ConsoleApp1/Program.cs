@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//enum Menu { CUSTOMER_REQUEST, ANNUAL_LIST, DAYS, EXIT };
-
 namespace ConsoleApp1
 {
     class Program
@@ -21,7 +19,9 @@ namespace ConsoleApp1
                     mat[i][j] = false;
                 }
             }
+
             
+
             int choise = 0;
             while (choise != 4)
             {
@@ -36,7 +36,7 @@ namespace ConsoleApp1
                 switch (choise)
                 {
                     case 1:
-                       
+
                         Console.Write("Enter the start day reservation (dd/mm/yyyy): ");
                         DateTime date = Convert.ToDateTime(Console.ReadLine());
                         date = new DateTime(date.Year, date.Month, date.Day);
@@ -63,7 +63,7 @@ namespace ConsoleApp1
                         break;
                     case 4:
                         Console.WriteLine("Thanks for using our system!");
-                        
+
                         break;
                     default:
                         break;
@@ -79,10 +79,16 @@ namespace ConsoleApp1
 
             for (int i = 0; i < days; i++)
             {
-                DateTime tempDate = date;
+                DateTime tempDate = new DateTime();
+                
+                tempDate = date;//WRONG******WRONG****WRONG****WRONG***WRONG****WRONG*****WRONG****WRONG*****WRONG****WRONG**WRONG
+
+
+                //tempDate(date.Year, date.Month, date.Day);
                 //Console.Write(" -> {0} ", date.ToString("dd/MM/yyyy"));
                 //Console.WriteLine("Day-> {0} / {1} <-Month", date.Day, date.Month);
-                if (mat[tempDate.Month - 1][tempDate.Day - 1] == true)
+
+                if (mat[tempDate.Month - 1][tempDate.Day -1] == true)// delete -1 becose wee needed to check after
                 {
                     return false;
                 };
