@@ -81,7 +81,7 @@ namespace ConsoleApp1
             {
                 DateTime tempDate = new DateTime();
                 
-                tempDate = date;//WRONG******WRONG****WRONG****WRONG***WRONG****WRONG*****WRONG****WRONG*****WRONG****WRONG**WRONG
+                tempDate = date;
 
 
                 //tempDate(date.Year, date.Month, date.Day);
