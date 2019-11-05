@@ -11,6 +11,7 @@ namespace Question1
         
         static void Main(string[] args)
         {
+            //tetete
             //Lottery numbers randomly
             Random rnd = new Random(DateTime.Now.Millisecond);
 

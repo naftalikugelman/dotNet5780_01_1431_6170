@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Question 1", "ConsoleApp6\Question 1.csproj", "{785A4F8A-39ED-4CFB-9A0E-06744B9526E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Part_1", "ConsoleApp6\Part_1.csproj", "{785A4F8A-39ED-4CFB-9A0E-06744B9526E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Question 2", "ConsoleApp1\Question 2.csproj", "{76155D8F-684B-4B79-9298-F4E6A95BE448}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Part_2", "ConsoleApp1\Part_2.csproj", "{76155D8F-684B-4B79-9298-F4E6A95BE448}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
